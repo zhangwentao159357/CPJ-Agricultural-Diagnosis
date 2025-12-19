@@ -6,7 +6,7 @@ This document describes the current repository structure after organization and 
 
 ```
 CPJ-Agricultural-Diagnosis/
-├── step1_caption_generation&enhancement/  # 📝 Caption generation & refinement
+├── step1_caption_generation and refinement/  # 📝 Caption generation & refinement
 │   ├── caption_generation.py              (Initial caption generation)
 │   ├── caption_judge_optimize.py          (Unified caption eval & optimization)
 │   └── data/
@@ -40,7 +40,7 @@ CPJ-Agricultural-Diagnosis/
 
 ## File Purpose Descriptions
 
-### step1_caption_generation&enhancement/
+### step1_caption_generation and refinement/
 
 - **caption_generation.py**: Initial caption generation using Vision-Language Models
   - Generates descriptive captions without naming crops or diseases
