@@ -48,7 +48,7 @@ CPJ-Agricultural-Diagnosis/
   - Supports command-line arguments for input/output files
 
 - **caption_judge_optimize.py**: Unified script for caption evaluation and optimization
-  - Evaluates caption quality on a 5-point scale
+  - Evaluates caption quality on a 10-point scale (threshold: 8.0)
   - Automatically refines captions scoring below threshold
   - Works for both diagnosis and knowledge QA tasks
 
@@ -66,10 +66,12 @@ CPJ-Agricultural-Diagnosis/
 
 - **diagnosis_judge.py**: LLM-as-a-Judge to select the best answer from two diagnosis answers
   - Evaluates on plant accuracy, disease accuracy, symptom accuracy, format, and completeness
+  - Uses 5-point scale (0-1 per criterion, total 0-5.0)
   - Provides numerical scores and transparent reasoning
 
 - **knowledge_qa_judge.py**: LLM-as-a-Judge to select the best answer from two knowledge QA answers
   - Evaluates on accuracy, completeness, specificity, practicality, and scientific validity
+  - Uses 5-point scale (0-1 per criterion, total 0-5.0)
   - Provides numerical scores and transparent reasoning
 
 ## Key Design Principles

@@ -24,12 +24,14 @@
 - ✅ All model names replaced with `"YOUR_MODEL_NAME"`
 - ✅ Removed hardcoded input/output paths - now use command-line arguments
 
-### 4. Scoring System (5-Point Scale)
+### 4. Scoring System
+- ✅ Caption evaluation: 10-point scale (0-10), threshold 8.0
+- ✅ Answer evaluation: 5-point scale (0-5), threshold 4.0
 - ✅ Updated `diagnosis_judge.py` to use 0-1 per criterion (total 0-5)
 - ✅ Updated `knowledge_qa_judge.py` to use 0-1 per criterion (total 0-5)
-- ✅ Updated all few-shot examples with 5-point scores
-- ✅ Data files contain 5-point scores (4.9/5.0, 3.6/5.0 range)
-- ✅ PROMPTS_AND_EVALUATION.md documents 5-point scale
+- ✅ Updated all few-shot examples with correct scores
+- ✅ Data files contain appropriate scores for each evaluation type
+- ✅ PROMPTS_AND_EVALUATION.md documents both scoring scales
 
 ### 5. Documentation
 - ✅ README.md - Complete, visually organized, clean structure
@@ -95,13 +97,14 @@ CPJ-Agricultural-Diagnosis/
 
 **Reviewer 1**: "How does the model evaluate the accuracy of the 'generated description'?"
 - **Answer**: See PROMPTS_AND_EVALUATION.md Section 1
-- Complete caption evaluation prompt with 5-point scale
-- Examples showing 4.9/5.0 (good) vs 3.6/5.0 (needs refinement)
+- Complete caption evaluation prompt with 10-point scale (threshold: 8.0)
+- Examples showing high-quality (9.8/10.0) vs needs refinement (7.2/10.0)
 
 **Reviewer 2**: "More concrete description of judging criteria and prompt design"
 - **Answer**: See PROMPTS_AND_EVALUATION.md Sections 2-3
 - Complete judge prompts with few-shot examples
-- 5-dimensional scoring (each 0-1, total 0-5)
+- Answer evaluation: 5-dimensional scoring (each 0-1, total 0-5)
+- Caption evaluation: 10-point scale with detailed criteria
 - Human validation: 94.2% agreement
 
 ### Reproducibility:
@@ -135,7 +138,7 @@ CPJ-Agricultural-Diagnosis/
 - **Professional structure**: Clean folder names, no spaces, consistent naming
 - **Complete documentation**: Every aspect documented for reproducibility
 - **Security**: No API keys or sensitive information
-- **Consistent 5-point scale**: Matches paper results (4.9/5.0, 3.6/5.0)
+- **Dual scoring scales**: Caption (10-point, threshold 8.0) and Answer (5-point, threshold 4.0)
 - **Visual appeal**: Framework diagram, clean README with icons
 - **Citation ready**: Proper attribution to CDDMBench and all authors
 

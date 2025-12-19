@@ -118,7 +118,7 @@ graph LR
 │  📝 STEP 1: Caption Enhancement                                 │
 │  ────────────────────────────────────────────────────────────   │
 │  Input: Raw agricultural image                                  │
-│  Process: VLM → Generate Caption → LLM Judge → Refine if <4.0  │
+│  Process: VLM → Generate Caption → LLM Judge → Refine if <8.0  │
 │  Output: "Compound pinnate leaf with scattered necrotic         │
 │           lesions (2-5mm) showing chlorotic halos..."           │
 └─────────────────────────────────────────────────────────────────┘
@@ -211,8 +211,8 @@ We validated our LLM-as-a-Judge approach against expert agricultural scientists:
 </table>
 
 **Quality Scores:**
-- ✅ Selected answers: **4.9 / 5.0** (high quality)
-- ⚠️ Unselected answers: **3.6 / 5.0** (acceptable)
+- ✅ Selected answers: **4.9/5.0** (high quality)
+- ⚠️ Unselected answers: **3.6/5.0** (acceptable)
 
 ---
 
@@ -275,10 +275,10 @@ cd "step1_caption_generation and refinement"
 python caption_judge_optimize.py \
     --input your_images.json \
     --output refined_captions.json \
-    --threshold 4.0
+    --threshold 8.0
 ```
 
-**Output**: JSON file with refined captions scoring ≥ 4.0/5.0
+**Output**: JSON file with refined captions scoring ≥ 8.0/10.0
 
 </details>
 
@@ -348,22 +348,22 @@ python diagnosis_judge.py \
 </tbody>
 </table>
 
-### 📏 Evaluation System (5-Point Scale)
+### 📏 Evaluation System
 
-#### Caption Quality Evaluation
+#### Caption Quality Evaluation (10-Point Scale)
 
 | Criterion | Weight | Description |
 |-----------|--------|-------------|
-| **Accuracy** | 0-1 | Correct identification of visual features |
-| **Completeness** | 0-1 | All key elements present |
-| **Detail** | 0-1 | Specific symptom descriptions |
-| **Relevance** | 0-1 | Useful for diagnosis |
-| **Clarity** | 0-1 | Professional language (80-120 words) |
+| **Accuracy** | 0-2 | Correct identification of visual features |
+| **Completeness** | 0-2 | All key elements present |
+| **Detail** | 0-2 | Specific symptom descriptions |
+| **Relevance** | 0-2 | Useful for diagnosis |
+| **Clarity** | 0-2 | Professional language (80-120 words) |
 
-- 🎯 **Threshold**: τ = 4.0/5.0
-- 🔄 **Auto-refinement**: Applied if score < 4.0
+- 🎯 **Threshold**: τ = 8.0/10.0
+- 🔄 **Auto-refinement**: Applied if score < 8.0
 
-#### Answer Quality Evaluation
+#### Answer Quality Evaluation (5-Point Scale)
 
 | Criterion | Weight | Description |
 |-----------|--------|-------------|
@@ -373,6 +373,7 @@ python diagnosis_judge.py \
 | **Format Adherence** | 0-1 | Includes both plant AND disease ID |
 | **Completeness** | 0-1 | Comprehensive and professional |
 
+- 🎯 **Threshold**: τ = 4.0/5.0
 - 📊 **Selection**: Higher total score (0-5) + transparent reasoning
 
 > 👉 **For complete details**: See [PROMPTS_AND_EVALUATION.md](PROMPTS_AND_EVALUATION.md)
@@ -500,8 +501,8 @@ This repository provides complete transparency for reproduction:
 - ✅ Output format specifications
 
 **📊 Evaluation Criteria**
-- ✅ Detailed scoring rubrics (5-point scale)
-- ✅ Threshold specifications (τ = 4.0)
+- ✅ Detailed scoring rubrics (caption: 10-point, answer: 5-point)
+- ✅ Threshold specifications (caption: τ = 8.0, answer: τ = 4.0)
 - ✅ Selection logic documentation
 
 **👥 Human Validation**

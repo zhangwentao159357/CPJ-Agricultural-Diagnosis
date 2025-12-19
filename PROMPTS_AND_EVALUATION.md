@@ -141,7 +141,7 @@ without identifying the plant or disease names.
 
 ### 📊 Caption Evaluation Criteria
 
-Captions are evaluated by **LLM-as-a-Judge** on a **5-point scale** based on overall quality:
+Captions are evaluated by **LLM-as-a-Judge** on a **10-point scale** based on overall quality:
 
 <table align="center">
 <thead>
@@ -180,18 +180,18 @@ Captions are evaluated by **LLM-as-a-Judge** on a **5-point scale** based on ove
 </tbody>
 </table>
 
-#### Rating Scale (0-5)
+#### Rating Scale (0-10)
 
 | Score Range | Quality Level | Description |
 |-------------|---------------|-------------|
-| **4.5 - 5.0** | 🌟 Excellent | Precise, accurate, highly relevant |
-| **3.5 - 4.0** | ✅ Good | Clear, mostly accurate and relevant |
-| **2.5 - 3.0** | ⚠️ Fair | Some useful information but incomplete |
-| **1.0 - 2.0** | ❌ Poor | Vague, inaccurate, or missing key information |
+| **9.0 - 10.0** | 🌟 Excellent | Precise, accurate, highly relevant |
+| **7.0 - 8.0** | ✅ Good | Clear, mostly accurate and relevant |
+| **5.0 - 6.0** | ⚠️ Fair | Some useful information but incomplete |
+| **2.0 - 4.0** | ❌ Poor | Vague, inaccurate, or missing key information |
 
 > 💡 **Human Validation Results**:
-> - Selected captions: **4.9/5.0** (high quality)
-> - Captions needing refinement: **3.6/5.0** (acceptable)
+> - Selected captions: **9.8/10.0** (high quality)
+> - Captions needing refinement: **7.2/10.0** (acceptable)
 
 <details>
 <summary><b>Evaluation Prompt (JSON Format)</b></summary>
@@ -253,8 +253,8 @@ Provide an improved version following the style of these examples:
 
 <table>
 <tr>
-<th width="50%">❌ Original (Score: 2.8/5.0)</th>
-<th width="50%">✅ Refined (Score: 4.7/5.0)</th>
+<th width="50%">❌ Original (Score: 5.6/10.0)</th>
+<th width="50%">✅ Refined (Score: 9.4/10.0)</th>
 </tr>
 <tr>
 <td valign="top">
@@ -727,7 +727,7 @@ Output Format:
     <td><b>3️⃣ Process</b></td>
     <td>
       • Experts independently evaluate both answers<br/>
-      • Rate each answer on same 10-point scale<br/>
+      • Rate each answer on same 5-point scale<br/>
       • Select better answer<br/>
       • Compare with LLM judgments
     </td>
@@ -789,8 +789,8 @@ Output Format:
 > "Is this crop diseased?"
 
 **Scores**:
-- ✅ Answer 1: **8.8/10** (selected)
-- Answer 2: **6.5/10**
+- ✅ Answer 1: **4.4/5.0** (selected)
+- Answer 2: **3.3/5.0**
 
 **Reason**:
 > "Answer 1 more specific on symptoms"
@@ -802,8 +802,8 @@ Output Format:
 > "Is this crop diseased?"
 
 **Scores**:
-- ✅ Answer 1: **9.0/10** (selected)
-- Answer 2: **6.8/10**
+- ✅ Answer 1: **4.5/5.0** (selected)
+- Answer 2: **3.4/5.0**
 
 **Reason**:
 > "Answer 1 correctly identifies disease stage"
@@ -813,7 +813,7 @@ Output Format:
 <tr>
 <td colspan="2" align="center" style="background-color:#e8f5e9; padding:10px">
   <b>✅ Result: AGREEMENT</b><br/>
-  Both selected Answer 1, scores within 0.5 points
+  Both selected Answer 1, scores within 0.1 points
 </td>
 </tr>
 </table>
@@ -841,7 +841,7 @@ Output Format:
     <td>
       • Original caption too vague<br/>
       • Missing key symptoms<br/>
-      <b>→ Solution</b>: Caption refinement with threshold τ=8
+      <b>→ Solution</b>: Caption refinement with threshold τ=8.0
     </td>
   </tr>
   <tr>
@@ -895,12 +895,12 @@ Symptoms insufficient to distinguish bacterial vs. fungal
 
 **🤖 LLM Decision**
 
-- **Answer 1**: "Bacterial spot based on lesion margins" ✅ **Selected (6.5/10)**
+- **Answer 1**: "Bacterial spot based on lesion margins" ✅ **Selected (3.3/5.0)**
 - **Answer 2**: "Fungal leaf spot based on lesion pattern" ❌ Not selected
 
 **👨‍🔬 Human Review**
 
-- Actually **fungal** (Answer 2 correct, **7.2/10**)
+- Actually **fungal** (Answer 2 correct, **3.6/5.0**)
 - LLM made incorrect selection
 
 **🔍 Analysis**
@@ -944,8 +944,8 @@ Enhanced caption prompt to explicitly request diagnostic features:
 
 ### 📊 **Evaluation Criteria**
 
-- ✅ Detailed scoring rubrics (5-point scale)
-- ✅ Threshold specifications (τ = 8/10)
+- ✅ Detailed scoring rubrics (caption: 10-point, answer: 5-point)
+- ✅ Threshold specifications (caption: τ = 8.0, answer: τ = 4.0)
 - ✅ Selection logic documentation
 - ✅ Tie-breaking rules
 

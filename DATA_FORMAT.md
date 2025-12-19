@@ -228,8 +228,8 @@
     "question": "Is this crop diseased?",
     "choice": 1,
     "reason": "More specific identification",
-    "answer1_score": 47,
-    "answer2_score": 32,
+    "answer1_score": 4.7,
+    "answer2_score": 3.2,
     "answer1_preview": "Bacterial infection...",
     "answer2_preview": "Showing symptoms..."
   }
@@ -239,14 +239,14 @@
 </td>
 <td valign="top">
 
-**Criteria (0-10 points each):**
+**Criteria (0-1 point each):**
 - 🌱 `plant_accuracy`: Crop identification
 - 🦠 `disease_accuracy`: Disease identification
 - 🔬 `symptom_accuracy`: Symptom description
 - 📋 `format_adherence`: Format compliance
 - ✅ `completeness`: Comprehensiveness
 
-**Total**: 0-50 points
+**Total**: 0-5.0 points
 
 </td>
 </tr>
@@ -271,8 +271,8 @@
     "question": "Control methods for rust?",
     "choice": 1,
     "reason": "Comprehensive details",
-    "score1": 46,
-    "score2": 35,
+    "score1": 4.6,
+    "score2": 3.5,
     "answer1_preview": "Resistant varieties...",
     "answer2_preview": "Use fungicides..."
   }
@@ -282,14 +282,14 @@
 </td>
 <td valign="top">
 
-**Criteria (0-10 points each):**
+**Criteria (0-1 point each):**
 - 🎯 `accuracy`: Scientific correctness
 - ✅ `completeness`: Coverage
 - 🔬 `specificity`: Detail level
 - 👨‍🌾 `practicality`: Actionability
 - 📚 `scientific_validity`: Evidence-based
 
-**Total**: 0-50 points
+**Total**: 0-5.0 points
 
 </td>
 </tr>

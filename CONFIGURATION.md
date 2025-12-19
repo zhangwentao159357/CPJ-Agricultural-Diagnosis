@@ -112,11 +112,19 @@ output_file = "path/to/final/output.json"
 Adjust the quality threshold for caption refinement:
 
 ```python
-threshold = 8  # Captions scoring below 8/10 will be refined
+threshold = 8.0  # Captions scoring below 8.0/10.0 will be refined
 ```
 
 Lower threshold = fewer refinements (faster, potentially lower quality)
 Higher threshold = more refinements (slower, higher quality)
+
+### Answer Selection Threshold (Step 3)
+
+Quality threshold for answer selection:
+
+```python
+threshold = 4.0  # Answers scoring below 4.0/5.0 are lower quality
+```
 
 ### Batch Size (All Steps)
 
@@ -232,7 +240,8 @@ VQA_MODEL = "gpt-5-nano"
 JUDGE_MODEL = "gpt-4"
 
 # Processing Configuration
-CAPTION_THRESHOLD = 8
+CAPTION_THRESHOLD = 8.0  # Caption quality threshold (10-point scale)
+ANSWER_THRESHOLD = 4.0   # Answer quality threshold (5-point scale)
 BATCH_SIZE = 5
 TIMEOUT = 30
 MAX_RETRIES = 3
