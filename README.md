@@ -82,8 +82,8 @@ Existing methods either:
 │  ──────────────────────────────────────────────────────────     │
 │  Image → Generate Caption → LLM Judge (score) → Refine if <4.0 │
 │                                                                  │
-│  Output: "Compound pinnate leaf with scattered dark brown       │
-│           lesions (2-5mm) showing yellow halos..."              │
+│  Output: "Compound pinnate leaf with scattered necrotic         │
+│           lesions (2-5mm) showing chlorotic halos..."           │
 └─────────────────────────────────────────────────────────────────┘
                              ↓
 ┌─────────────────────────────────────────────────────────────────┐
@@ -182,7 +182,7 @@ See [CONFIGURATION.md](CONFIGURATION.md) for detailed setup instructions.
 
 ```bash
 # Step 1: Generate and refine captions
-cd step1_caption_enhancement
+cd step1_caption_generation&enhancement
 python caption_judge_optimize.py \
     --input your_images.json \
     --output refined_captions.json \
@@ -191,7 +191,7 @@ python caption_judge_optimize.py \
 # Step 2: Generate dual VQA answers
 cd ../step2_vqa_generation
 python diagnosis_vqa.py \
-    --input ../step1_caption_enhancement/data/refined_captions.json \
+    --input ../step1_caption_generation&enhancement/data/refined_captions.json \
     --output data/dual_answers.json \
     --model gpt-4
 
@@ -285,7 +285,8 @@ Every decision is explained with numerical scores:
 
 ```
 CPJ-Agricultural-Diagnosis/
-├── step1_caption_enhancement/          # 📝 Caption generation & refinement
+├── step1_caption_generation&enhancement/  # 📝 Caption generation & refinement
+│   ├── caption_generation.py              (Initial caption generation)
 │   ├── caption_judge_optimize.py          (Unified caption eval & optimization)
 │   └── data/
 │       └── refined_captions_sample.json   (Sample refined captions)

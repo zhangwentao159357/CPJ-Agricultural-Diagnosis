@@ -17,29 +17,69 @@ This document details the prompt engineering and evaluation criteria used in the
 
 ### Caption Generation Prompt
 
+**Objective**: Describe visual features and disease symptoms without naming crops or diseases, to minimize bias in subsequent VQA.
+
 **System Prompt:**
 ```
-You are an expert agricultural diagnostician analyzing crop disease images.
-Generate a detailed, objective caption describing the plant and its condition.
+You are an expert agricultural assistant specializing in describing plant conditions from images.
 
-Focus on:
-1. Plant identification (morphological features, NOT names to avoid bias)
-2. Disease symptoms (location, shape, color, size, distribution)
-3. Severity assessment (percentage affected, disease stage)
-4. Environmental/contextual observations
+## Core Task
+Describe the visual features of the plant and any disease symptoms in the image,
+without identifying the plant or disease names.
 
-Keep captions 80-120 words, professional, and neutral.
+## Key Requirements
+1. Focus on describing the plant's morphology, color, and overall condition.
+2. If disease symptoms are present, describe their appearance: color, shape,
+   distribution, size, quantity, and extent.
+3. If no disease is visible, state that the plant appears healthy.
+4. Assess the severity and stage of any symptoms based on visual cues.
+5. Keep the description concise (90-100 words).
+6. If uncertain about features, indicate "unable to describe clearly" or "need more images".
+
+## Output Format
+{
+  "image_caption": "Description of the plant's visual features and any disease symptoms,
+                   including morphology, color, distribution, size, and condition,
+                   without naming the plant or disease."
+}
 ```
 
 **Few-Shot Examples:**
 
-*Example 1 (Healthy):*
-- **Input**: [Apple leaf image]
-- **Output**: "Leaf with ovate shape, serrated margins, and smooth texture. Surface shows uniform green coloration with no discoloration or lesions. Veins are clearly visible and intact. No signs of wilting, spotting, or pest damage. Leaf appears healthy with normal turgor and no abnormalities."
+*Example 1 (Fungal Pustules):*
+- **Input**: [Plant leaf image showing disease symptoms]
+- **Output**:
+```json
+{
+  "image_caption": "The plant has long, slender leaves with numerous orange-brown pustules scattered on the surface. The leaves show premature browning and some collapse, contrasting with greener plants in the background. The symptoms suggest a fungal infection that reduces plant vigor, with pustules measuring 1-2 mm in diameter. The condition appears moderate, affecting approximately 30% of the leaf area."
+}
+```
 
-*Example 2 (Diseased):*
-- **Input**: [Tomato leaf with bacterial spot]
-- **Output**: "Compound pinnate leaf with multiple leaflets showing scattered dark brown lesions (2-5mm diameter) with yellow halos. Lesions concentrated on lower leaflets, some coalescing. Approximately 20-30% of leaf area affected. Lesions appear raised with angular shape following vein patterns, suggesting bacterial infection in early-to-moderate stage."
+*Example 2 (Necrotic Lesions):*
+- **Input**: [Plant leaf image showing disease symptoms]
+- **Output**:
+```json
+{
+  "image_caption": "The leaf displays dark-brown, irregular lesions with surrounding yellowing, indicating tissue necrosis. Lesions vary in size from 5-10 mm and are distributed randomly across the leaf surface. The plant shows signs of premature aging, with some areas wilting. The severity is high, covering about 40% of the leaf, and the infection seems advanced."
+}
+```
+
+*Example 3 (Powdery Growth):*
+- **Input**: [Plant leaf image showing disease symptoms]
+- **Output**:
+```json
+{
+  "image_caption": "The leaf exhibits white, powdery patches that are diffuse and cover portions of the upper surface. The patches have a fuzzy texture and are approximately 5-15 mm in diameter. The plant otherwise appears green and robust, but the symptoms reduce leaf photosynthesis. The infection is at an early stage, affecting around 20% of the leaf."
+}
+```
+
+**Model Configuration:**
+- **Model**: Vision-Language Model (e.g., Qwen2.5-VL-72B)
+- **Temperature**: 0.1 (for deterministic output)
+- **Max Tokens**: 400
+- **Top-p**: 0.8
+- **Frequency Penalty**: 0.3 (to avoid repetition)
+- **Presence Penalty**: 0.2 (to maintain topic focus)
 
 ### Caption Evaluation Criteria
 

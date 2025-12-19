@@ -34,9 +34,9 @@ This document describes the JSON data formats used throughout the CPJ pipeline.
     "image": "path/to/image.jpg",
     "question": "Is this crop diseased?",
     "answer": "Yes, this is a tomato leaf with bacterial spot.",
-    "image_caption": "Tomato leaf exhibiting symptoms of bacterial spot. Small, dark brown lesions with yellow halos scattered across the leaf surface...",
+    "image_caption": "Compound pinnate leaf exhibiting symptoms of bacterial infection. Small, dark brown lesions with yellow halos scattered across the leaf surface, showing angular patterns following vein structures...",
     "rating": 9,
-    "reasoning": "Caption accurately identifies plant and disease with specific symptom description",
+    "reasoning": "Caption accurately describes plant morphology and disease symptoms with specific details",
     "suggestions": "Could include more detail about disease stage",
     "evaluated": true,
     "optimized": false
@@ -58,7 +58,7 @@ This document describes the JSON data formats used throughout the CPJ pipeline.
 [
   {
     "question_id": "test_conv_0001",
-    "image_caption": "Tomato leaf exhibiting symptoms of bacterial spot...",
+    "image_caption": "Compound pinnate leaf exhibiting symptoms of bacterial infection. Dark brown lesions with yellow halos scattered across the surface, showing angular patterns and coalescing areas...",
     "question": "Is this crop diseased?",
     "image": "path/to/image.jpg",
     "answer": "Yes, this is a tomato leaf with bacterial spot.",
@@ -78,7 +78,7 @@ This document describes the JSON data formats used throughout the CPJ pipeline.
 [
   {
     "question_id": "test_conv_0001",
-    "image_caption": "Tomato leaf exhibiting symptoms of bacterial spot...",
+    "image_caption": "Compound pinnate leaf exhibiting symptoms of bacterial infection. Dark brown lesions with yellow halos scattered across the surface...",
     "question": "Is this crop diseased?",
     "image": "path/to/image.jpg",
     "answer": "Yes, this is a tomato leaf with bacterial spot.",
@@ -225,17 +225,17 @@ def validate_step3_input(data):
 
 // After Step 1
 {"question_id": "001", "image": "img.jpg", "question": "Is this diseased?",
- "answer": "Yes", "image_caption": "Tomato leaf with bacterial spot...",
+ "answer": "Yes", "image_caption": "Compound pinnate leaf with bacterial necrotic lesions and yellow halos...",
  "rating": 9, "evaluated": true}
 
 // After Step 2
-{"question_id": "001", "image_caption": "Tomato leaf with bacterial spot...",
+{"question_id": "001", "image_caption": "Compound pinnate leaf with bacterial necrotic lesions...",
  "question": "Is this diseased?", "answer": "Yes",
  "generation_answer1": "Yes, bacterial spot on tomato...",
  "generation_answer2": "Yes, tomato (Solanum lycopersicum) with bacterial spot..."}
 
 // After Step 3
-{"question_id": "001", "image_caption": "Tomato leaf with bacterial spot...",
+{"question_id": "001", "image_caption": "Compound pinnate leaf with bacterial necrotic lesions...",
  "question": "Is this diseased?", "answer": "Yes",
  "generation_answer": "Yes, bacterial spot on tomato...",
  "selected_answer": "answer1", "selected_score": 47, "unselected_score": 32,
