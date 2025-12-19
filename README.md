@@ -532,35 +532,6 @@ This repository provides complete transparency for reproduction:
 </tr>
 </table>
 
-### 📢 Addressing Reviewer Concerns
-
-<details>
-<summary><b>Reviewer 1: Caption evaluation methodology</b></summary>
-
-> *"How does the model evaluate the accuracy of the 'generated description' and the specific effects of optimizing the process?"*
-
-**Our Response**: See [PROMPTS_AND_EVALUATION.md](PROMPTS_AND_EVALUATION.md) Section 1 for:
-- Complete LLM-as-a-Judge evaluation prompt
-- 5-point scoring rubric with detailed criteria
-- Automatic refinement process for scores < 4.0
-- Before/after refinement examples with score improvements
-
-</details>
-
-<details>
-<summary><b>Reviewer 2: Judging criteria and failure cases</b></summary>
-
-> *"More concrete description of judging criteria, prompt design, and failure cases would help reproducibility."*
-
-**Our Response**: See [PROMPTS_AND_EVALUATION.md](PROMPTS_AND_EVALUATION.md) Sections 2-3 for:
-- Complete judge system prompts with few-shot examples
-- Detailed scoring criteria across 5 dimensions (0-1 each)
-- Step-by-step selection logic
-- Common failure patterns with analysis
-- Human validation protocol and agreement metrics
-
-</details>
-
 ---
 
 ## 👥 Contributors & Contact
