@@ -16,6 +16,15 @@
 
 ---
 
+## 🏗️ Framework Architecture
+
+<div align="center">
+  <img src="docs/framework.png" alt="CPJ Framework" width="95%"/>
+  <p><em>Figure 1: Three-stage CPJ pipeline for explainable agricultural diagnosis</em></p>
+</div>
+
+---
+
 ## 🌟 Highlights
 
 <table align="center">
@@ -84,65 +93,6 @@
 <td><b>Transparent Selection</b><br/>Select best answer with explicit scoring and reasoning</td>
 </tr>
 </table>
-
----
-
-## 🏗️ Framework Architecture
-
-<div align="center">
-  <img src="docs/framework.png" alt="CPJ Framework" width="95%"/>
-  <p><em>Figure 1: Three-stage CPJ pipeline for explainable agricultural diagnosis</em></p>
-</div>
-
-### 🔄 Pipeline Workflow
-
-```mermaid
-graph LR
-    A[📷 Input Image] --> B[📝 Step 1: Caption Enhancement]
-    B --> C[🎯 Step 2: Dual-Answer VQA]
-    C --> D[⚖️ Step 3: Judge Selection]
-    D --> E[✅ Final Answer + Reasoning]
-
-    style A fill:#e3f2fd
-    style B fill:#fff3e0
-    style C fill:#f3e5f5
-    style D fill:#e8f5e9
-    style E fill:#fce4ec
-```
-
-<details>
-<summary><b>📋 Click to see detailed workflow</b></summary>
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│  📝 STEP 1: Caption Enhancement                                 │
-│  ────────────────────────────────────────────────────────────   │
-│  Input: Raw agricultural image                                  │
-│  Process: VLM → Generate Caption → LLM Judge → Refine if <8.0  │
-│  Output: "Compound pinnate leaf with scattered necrotic         │
-│           lesions (2-5mm) showing chlorotic halos..."           │
-└─────────────────────────────────────────────────────────────────┘
-                             ↓
-┌─────────────────────────────────────────────────────────────────┐
-│  🎯 STEP 2: Dual-Answer VQA Generation                          │
-│  ────────────────────────────────────────────────────────────   │
-│  Input: Caption + Question                                      │
-│  Process: Generate two complementary perspectives               │
-│  - Answer 1 (Disease Focus): Symptoms, severity, features       │
-│  - Answer 2 (Crop Focus): Species, morphology, growth stage     │
-└─────────────────────────────────────────────────────────────────┘
-                             ↓
-┌─────────────────────────────────────────────────────────────────┐
-│  ⚖️ STEP 3: LLM-as-a-Judge Selection                            │
-│  ────────────────────────────────────────────────────────────   │
-│  Input: Two candidate answers                                   │
-│  Process: Evaluate on 5 criteria (0-1 each) → Select best       │
-│  Output: Selected: 4.7/5.0  |  Unselected: 3.2/5.0             │
-│         + Transparent reasoning for selection                   │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-</details>
 
 ---
 
