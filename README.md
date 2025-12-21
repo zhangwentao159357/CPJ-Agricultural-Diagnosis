@@ -492,29 +492,8 @@ This repository provides complete transparency for reproduction:
 <b>Wentao Zhang</b><br/>
 📧 <a href="mailto:1557085480@qq.com">1557085480@qq.com</a>
 </td>
-<td align="center">
-<b>Tao Fang</b> †<br/>
-📧 <a href="mailto:taofang@mmc.edu.mo">taofang@mmc.edu.mo</a>
-</td>
-<td align="center">
-<b>Lina Lu</b> †<br/>
-📧 <a href="mailto:3050651@qq.com">3050651@qq.com</a>
-</td>
-</tr>
-<tr>
-<td align="center">
-<b>Lifei Wang</b><br/>
-📧 <a href="mailto:wanglifei@mmc.edu.mo">wanglifei@mmc.edu.mo</a>
-</td>
-<td align="center">
-<b>Weihe Zhong</b><br/>
-📧 <a href="mailto:whzhong@mmc.edu.mo">whzhong@mmc.edu.mo</a>
-</td>
-<td></td>
 </tr>
 </table>
-
-<p align="center"><em>† Co-corresponding authors</em></p>
 
 ---
 
